@@ -2,29 +2,29 @@
 #include <vector>
 using namespace std;
 
-// ±©Á¦½â·¨
-// Ê±¼ä¸´ÔÓ¶È£ºO(n^2)
-// ¿Õ¼ä¸´ÔÓ¶È£ºO(1)
+// æš´åŠ›è§£æ³•
+// æ—¶é—´å¤æ‚åº¦ï¼šO(n^2)
+// ç©ºé—´å¤æ‚åº¦ï¼šO(1)
 class Solution1 {
 public:
     int removeElement(vector<int>& nums, int val) {
         int size = nums.size();
         for (int i = 0; i < size; i++) {
-            if (nums[i] == val) { // ·¢ÏÖĞèÒªÒÆ³ıµÄÔªËØ£¬¾Í½«Êı×é¼¯ÌåÏòÇ°ÒÆ¶¯Ò»Î»
+            if (nums[i] == val) { // å‘ç°éœ€è¦ç§»é™¤çš„å…ƒç´ ï¼Œå°±å°†æ•°ç»„é›†ä½“å‘å‰ç§»åŠ¨ä¸€ä½
                 for (int j = i + 1; j < size; j++) {
                     nums[j - 1] = nums[j];
                 }
-                i--; // ÒòÎªÏÂ±êiÒÔºóµÄÊıÖµ¶¼ÏòÇ°ÒÆ¶¯ÁËÒ»Î»£¬ËùÒÔiÒ²ÏòÇ°ÒÆ¶¯Ò»Î»
-                size--; // ´ËÊ±Êı×éµÄ´óĞ¡-1
+                i--; // å› ä¸ºä¸‹æ ‡iä»¥åçš„æ•°å€¼éƒ½å‘å‰ç§»åŠ¨äº†ä¸€ä½ï¼Œæ‰€ä»¥iä¹Ÿå‘å‰ç§»åŠ¨ä¸€ä½
+                size--; // æ­¤æ—¶æ•°ç»„çš„å¤§å°-1
             }
         }
         return size;
     }
 };
 
-// Ë«Ö¸Õë·¨£¨¿ìÂıÖ¸Õë·¨£©
-// Ê±¼ä¸´ÔÓ¶È£ºO(n)
-// ¿Õ¼ä¸´ÔÓ¶È£ºO(1)
+// åŒæŒ‡é’ˆæ³•ï¼ˆå¿«æ…¢æŒ‡é’ˆæ³•ï¼‰
+// æ—¶é—´å¤æ‚åº¦ï¼šO(n)
+// ç©ºé—´å¤æ‚åº¦ï¼šO(1)
 class Solution2 {
 public:
     int removeElement(vector<int>& nums, int val) {
@@ -39,9 +39,9 @@ public:
 };
 
 /**
-* ÏàÏòË«Ö¸Õë·½·¨£¬»ùÓÚÔªËØË³Ğò¿ÉÒÔ¸Ä±äµÄÌâÄ¿ÃèÊö¸Ä±äÁËÔªËØÏà¶ÔÎ»ÖÃ£¬È·±£ÁËÒÆ¶¯×îÉÙÔªËØ
-* Ê±¼ä¸´ÔÓ¶È£ºO(n)
-* ¿Õ¼ä¸´ÔÓ¶È£ºO(1)
+* ç›¸å‘åŒæŒ‡é’ˆæ–¹æ³•ï¼ŒåŸºäºå…ƒç´ é¡ºåºå¯ä»¥æ”¹å˜çš„é¢˜ç›®æè¿°æ”¹å˜äº†å…ƒç´ ç›¸å¯¹ä½ç½®ï¼Œç¡®ä¿äº†ç§»åŠ¨æœ€å°‘å…ƒç´ 
+* æ—¶é—´å¤æ‚åº¦ï¼šO(n)
+* ç©ºé—´å¤æ‚åº¦ï¼šO(1)
 */
 class Solution3 {
 public:
@@ -49,19 +49,19 @@ public:
         int leftIndex = 0;
         int rightIndex = nums.size() - 1;
         while (leftIndex <= rightIndex) {
-            // ÕÒ×ó±ßµÈÓÚvalµÄÔªËØ
+            // æ‰¾å·¦è¾¹ç­‰äºvalçš„å…ƒç´ 
             while (leftIndex <= rightIndex && nums[leftIndex] != val) {
                 ++leftIndex;
             }
-            // ÕÒÓÒ±ß²»µÈÓÚvalµÄÔªËØ
+            // æ‰¾å³è¾¹ä¸ç­‰äºvalçš„å…ƒç´ 
             while (leftIndex <= rightIndex && nums[rightIndex] == val) {
                 --rightIndex;
             }
-            // ½«ÓÒ±ß²»µÈÓÚvalµÄÔªËØ¸²¸Ç×ó±ßµÈÓÚvalµÄÔªËØ
+            // å°†å³è¾¹ä¸ç­‰äºvalçš„å…ƒç´ è¦†ç›–å·¦è¾¹ç­‰äºvalçš„å…ƒç´ 
             if (leftIndex < rightIndex) {
                 nums[leftIndex++] = nums[rightIndex--];
             }
         }
-        return leftIndex;   // leftIndexÒ»¶¨Ö¸ÏòÁË×îÖÕÊı×éÄ©Î²µÄÏÂÒ»¸öÔªËØ
+        return leftIndex;   // leftIndexä¸€å®šæŒ‡å‘äº†æœ€ç»ˆæ•°ç»„æœ«å°¾çš„ä¸‹ä¸€ä¸ªå…ƒç´ 
     }
 };
