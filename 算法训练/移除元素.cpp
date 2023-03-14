@@ -5,7 +5,7 @@ using namespace std;
 // 暴力解法
 // 时间复杂度：O(n^2)
 // 空间复杂度：O(1)
-class Solution {
+class Solution1 {
 public:
     int removeElement(vector<int>& nums, int val) {
         int size = nums.size();
@@ -25,7 +25,7 @@ public:
 // 双指针法（快慢指针法）
 // 时间复杂度：O(n)
 // 空间复杂度：O(1)
-class Solution {
+class Solution2 {
 public:
     int removeElement(vector<int>& nums, int val) {
         int slowIndex = 0;
@@ -43,7 +43,7 @@ public:
 * 时间复杂度：O(n)
 * 空间复杂度：O(1)
 */
-class Solution {
+class Solution3 {
 public:
     int removeElement(vector<int>& nums, int val) {
         int leftIndex = 0;
