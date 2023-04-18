@@ -92,5 +92,6 @@ int main(){
     ListNode* L3=mergeTwoList(L1,L2);
 
     printList(L3);
+    cout<<endl;
     return 0;
 }
